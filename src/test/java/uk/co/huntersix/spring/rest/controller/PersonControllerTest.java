@@ -122,7 +122,7 @@ public class PersonControllerTest {
     public void shouldReturnNoMatchFromAllPeopleList() throws Exception {
         when(personDataService.findByLastName(any())).thenReturn(Collections.emptyList());
 
-        this.mockMvc.perform(get("/person/smith"))
+        this.mockMvc.perform(get("/person/sutter"))
             .andDo(print())
             .andExpect(status().isOk())
             .andExpect(jsonPath("$").isArray())
