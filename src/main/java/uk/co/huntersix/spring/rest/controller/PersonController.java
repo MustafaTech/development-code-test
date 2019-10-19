@@ -11,7 +11,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import uk.co.huntersix.spring.rest.model.Person;
 import uk.co.huntersix.spring.rest.referencedata.PersonDataService;
-
+/*
+ * person			:  	Retrieve a person if exists.
+ * 
+ * createNewPerson 	:	Create a new person, if it doesn't exist.
+ * 
+ * allPeople		:	Retrieve all people by last name 
+ * 
+ */
 @RestController
 public class PersonController {
     private PersonDataService personDataService;
@@ -28,12 +35,12 @@ public class PersonController {
     
     @PostMapping("/person")
     public Person createNewPerson(@RequestBody Person person) {
-        personDataService.addPerson(person);
+    	personDataService.addPerson(person);
         return person;
     }
     
     @GetMapping("/person/{lastName}")
-    public List<Person> people(@PathVariable(value = "lastName") String lastName) {
+    public List<Person> allPeople(@PathVariable(value = "lastName") String lastName) {
         return personDataService.findByLastName(lastName);
     }
 }

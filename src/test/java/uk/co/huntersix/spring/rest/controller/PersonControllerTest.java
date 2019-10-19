@@ -1,17 +1,13 @@
 package uk.co.huntersix.spring.rest.controller;
 
 import static org.hamcrest.Matchers.hasSize;
-
 import static org.mockito.ArgumentMatchers.any;
-
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -75,7 +71,7 @@ public class PersonControllerTest {
     @Test (expected = PersonNotFoundException.class)
     public void shouldThrowExceptionPersonNotFoundService() throws Exception {
         when(personDataService.findPerson(any(), any())).thenThrow(PersonNotFoundException.class);
-        this.mockMvc.perform(get("/person/mary/mary"))
+        this.mockMvc.perform(get("/person/yyy/zzz"))
             .andDo(print())
             .andExpect(status().isNotFound())
             .andExpect(status().reason("Person not found"));
